@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="space-btw">
+    <h1>Welcome {{ user.first_name }}</h1>
+    <a href="/magazine/new">Add Magazine</a>
+    <a href="/users/account">Account</a>
+    <a href="/logout" class="btn btn-primary">Logout</a>
+</div>
+
+<h2 class="display-6">Magazines</h2>
+<div class="sighting-box">
+{% for magazine in magazines %}
+    <p class="lead"><a href="/show/{{ magazine.id }}">{{ magazine.title }}</a> added by {{ magazine.first_name }} {{ magazine.last_name }}</p>
+{% endfor %}
+</div>
+</div>
+
+{% endblock %}

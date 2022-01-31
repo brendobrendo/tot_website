@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<a href="/dashboard">Home</a>
+<a href="/magazine/new">Add Magazine</a>
+<a href="/logout" class="btn btn-primary">Logout</a>
+<h1>Update User</h1>
+<form action="/users/update" method="POST" class="border bg-light">
+    <div class="mb-3 fields">
+      <label class="form-label">First Name:</label>
+      <input type="text" class="form-control input-field" name="first_name" value="{{ user.first_name }}">
+    </div>
+    {% for message in get_flashed_messages(category_filter=["err_surveys_name"]) %}
+    <p class="alert alert-danger">{{message}}</p>
+    {% endfor %}
+    <div class="mb-3 fields">
+        <label class="form-label">Last Name:</label>
+        <input type="text" class="form-control input-field" name="last_name" value="{{ user.last_name }}">
+    </div>
+    {% for message in get_flashed_messages(category_filter=["err_surveys_name"]) %}
+    <p class="alert alert-danger">{{message}}</p>
+    {% endfor %}
+    <div class="mb-3 fields">
+        <label class="form-label">Email:</label>
+        <input type="text" class="form-control input-field" name="email" value="{{ user.email }}">
+    </div>
+    {% for message in get_flashed_messages(category_filter=["err_surveys_name"]) %}
+    <p class="alert alert-danger">{{message}}</p>
+    {% endfor %} 
+    <button type="submit" class="btn btn-primary">Update</button>
+  </form>
+  <div>
+      <h1>User's Magazines</h1>
+      {% for magazine in user.magazines %}
+        <p>{{ magazine.title }} <a href="/delete/{{ magazine.id }}">delete</a></p>
+      {% endfor %}
+  </div>
+
+{% endblock %}

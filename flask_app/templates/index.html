@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<form action="/register" method="POST" class="border bg-light">
+    <h1>Register</h1>
+    <div class="mb-3 fields">
+        <label class="form-label">First Name:</label>
+        <input type="text" class="form-control input-field" name="first_name">
+    </div>
+    {% for message in get_flashed_messages(category_filter=["err_users_first_name"]) %}
+    <p class="alert alert-danger">{{message}}</p>
+    {% endfor %}
+    <div class="mb-3 fields">
+      <label class="form-label">Last Name:</label>
+      <input type="text" class="form-control input-field" name="last_name">
+    </div>
+    {% for message in get_flashed_messages(category_filter=["err_users_last_name"]) %}
+    <p class="alert alert-danger">{{message}}</p>
+    {% endfor %}
+    <div class="mb-3 fields">
+        <label class="form-label">Email:</label>
+        <input type="text" class="form-control input-field" name="email">
+    </div>
+    {% for message in get_flashed_messages(category_filter=["err_users_email"]) %}
+    <p class="alert alert-danger">{{message}}</p>
+    {% endfor %}
+    <div class="mb-3 fields">
+        <label class="form-label">Password:</label>
+        <input type="password" class="form-control input-field" name="password">
+    </div>
+    {% for message in get_flashed_messages(category_filter=["err_users_password"]) %}
+    <p class="alert alert-danger">{{message}}</p>
+    {% endfor %}
+    <div class="mb-3 fields">
+        <label class="form-label">Confirm Password:</label>
+        <input type="password" class="form-control input-field" name="confirmation_password">
+    </div>
+    {% for message in get_flashed_messages(category_filter=["err_password_match"]) %}
+    <p class="alert alert-danger">{{message}}</p>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary">Register</button>
+  </form>
+
+  <form action="/login" method="POST" class="border bg-light">
+    <h1>Login</h1>
+    <div class="mb-3 fields">
+      <label class="form-label">Email:</label>
+      <input type="text" class="form-control input-field" name="email">
+    </div>
+    {% for message in get_flashed_messages(category_filter=["err_users_email_login"]) %}
+    <p class="alert alert-danger">{{message}}</p>
+    {% endfor %}
+    <div class="mb-3 fields">
+        <label class="form-label">Password:</label>
+        <input type="password" class="form-control input-field" name="password">
+      </div>
+      {% for message in get_flashed_messages(category_filter=["err_user_password_login"]) %}
+      <p class="alert alert-danger">{{message}}</p>
+      {% endfor %}
+    <button type="submit" class="btn btn-primary">Log In</button>
+  </form>
+</div>  
+{% endblock %}

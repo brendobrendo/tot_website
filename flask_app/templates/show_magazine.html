@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<a href="/magazine/new">Add Magazine</a>
+<a href="/user/{{ user.id }}">Account</a>
+<a href="/logout" class="btn btn-primary">Logout</a>
+<div class="sighting-report block">
+    <h1>{{ magazine.title }}</h1>
+    <p>Added By: {{ magazine.first_name }} {{ magazine.last_name }}</p>
+    <p>Description: {{ magazine.description }}</p>
+</div>
+
+{% endblock %}

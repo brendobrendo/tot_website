@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>Add a Magazine</h1>
+<a href="/dashboard">Home</a>
+<a href="/logout" class="btn btn-primary">Logout</a>
+<form action="/create/magazine" method="POST" class="border bg-light">
+    <div class="mb-3 fields">
+      <label class="form-label">Title:</label>
+      <input type="text" class="form-control input-field" name="title">
+    </div>
+    {% for message in get_flashed_messages(category_filter=["err_surveys_name"]) %}
+    <p class="alert alert-danger">{{message}}</p>
+    {% endfor %}
+      <div class="mb-3 block">
+        <label class="form-label">Description:</label>
+        <textarea name="description"></textarea>
+      </div>
+      {% for message in get_flashed_messages(category_filter=["err_surveys_comment"]) %}
+      <p class="alert alert-danger">{{message}}</p>
+      {% endfor %}
+    <button type="submit" class="btn btn-primary">Report</button>
+  </form>
+
+{% endblock %}

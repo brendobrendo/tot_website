@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<form action="/process" method="POST" class="border bg-light">
+    <div class="mb-3 fields">
+      <label class="form-label">Your Name: </label>
+      <input type="text" class="form-control input-field" id="exampleInputEmail1" name="name">
+    </div>
+    <div class="mb-3 fields">
+        <label for="dojo_id">Dojo:</label>
+        <select name="dojo_id">
+            {% for dojo in dojos %}
+            <option value={{dojo.id}}>{{dojo.name}}</option>
+            {% endfor %}
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Date of sighting</label>
+        <input type="date" class="form-control" data-date-end-date="0d" name="sighting_date">
+      </div>
+      <div>
+        <label for="age">Age:</label>
+        <input type="number" name="age">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Comment (Optional):</label>
+        <textarea name="comment"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Button</button>
+  </form>
+
+{% endblock %}
